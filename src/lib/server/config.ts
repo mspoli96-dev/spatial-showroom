@@ -3,7 +3,7 @@ import { PROPOSAL_MODEL } from "../configuration";
 
 export const MODEL = PROPOSAL_MODEL;
 export const VISITOR_COOKIE = "spatial_visitor";
-export const VISITOR_DAILY_LIMIT = 5;
+export const VISITOR_DAILY_LIMIT = 10;
 export const GLOBAL_DAILY_LIMIT = 30;
 export const CONCURRENT_LIMIT = 2;
 export const RESERVATION_SECONDS = 120;

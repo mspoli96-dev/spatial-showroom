@@ -41,13 +41,13 @@ describe("atomic Redis admission scripts executed in Lua", () => {
     expect(redis.get("spatial:{admission}:visitor-active:a")).toBe("new");
     await expect(store.reserve("a", "third")).rejects.toMatchObject({ status: 429 });
   });
-  it("stops each visitor at five daily attempts without partially charging a rejection", async () => {
+  it("stops each visitor at ten daily attempts without partially charging a rejection", async () => {
     const redis = new LuaRedis();
     const store = createProposalStore(redis, () => redis.at);
-    for (let index = 0; index < 5; index++) { await store.reserve("a", `r${index}`); await store.release("a", `r${index}`); }
-    await expect(store.reserve("a", "r6")).rejects.toMatchObject({ status: 429 });
-    expect(redis.get("spatial:{admission}:daily:2026-10-07")).toBe("5");
-    expect(redis.get("spatial:{admission}:budget:2026-10")).toBe("1250000");
+    for (let index = 0; index < 10; index++) { await store.reserve("a", `r${index}`); await store.release("a", `r${index}`); }
+    await expect(store.reserve("a", "r11")).rejects.toMatchObject({ status: 429 });
+    expect(redis.get("spatial:{admission}:daily:2026-10-07")).toBe("10");
+    expect(redis.get("spatial:{admission}:budget:2026-10")).toBe("2500000");
   });
   it("stops global daily attempts at thirty independently of fresh visitor cookies", async () => {
     const redis = new LuaRedis();
