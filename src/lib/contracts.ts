@@ -1,0 +1,11 @@
+export type Category = "desk" | "chair" | "lamp" | "storage";
+export type Finish = "oak" | "walnut" | "chalk";
+export type Fabric = "sage" | "sand" | "charcoal";
+export type Configuration = { deskId: string; chairId: string; lampId: string | null; storageId: string | null; finish: Finish; fabric: Fabric; layout: "left" | "right"; lighting: "day" | "evening" };
+export type ConfigKey = keyof Configuration;
+export type Product = { id: string; category: Category; name: string; description: string; priceCents: number; width: number; depth: number; height: number };
+export type Placement = { category: Category; productId: string; position: [number, number, number]; rotationY: number; footprint: { minX: number; maxX: number; minZ: number; maxZ: number }; surface: "floor" | "desktop" };
+export type Assessment = { totalCents: number; withinBudget: boolean; fitsRoom: boolean; issues: string[]; placements: Placement[] };
+export type ProposalRequest = { prompt: string; current: Configuration; budgetCents: number; locks: ConfigKey[]; revision: string; consent: true };
+export type Proposal = { status: "proposal" | "unavailable"; configuration: Configuration | null; explanation: string; limitations: string[]; revision: string; changedKeys: ConfigKey[]; totalCents: number | null; model: string };
+export type LiveConfig = { liveEnabled: boolean; model: string; unavailableReason: string | null };
