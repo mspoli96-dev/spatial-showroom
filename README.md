@@ -2,6 +2,8 @@
 
 A conversational 3D home-office configurator by [Webytex Agencies](https://agencies.webytex.com/#contact). Explore an original fictional collection, adjust a room by hand, or ask an AI assistant for a different direction within your budget.
 
+[Try the live demo](https://webytex-spatial-showroom.vercel.app) · [Explore the source](https://github.com/mspoli96-dev/spatial-showroom)
+
 This is an example of a configurable ecommerce experience an agency could offer a client. The collection is illustrative and nothing is available for purchase.
 
 ![Spatial Showroom editorial cover showing a furnished home office and a pinned-chair design brief](public/social-preview.png)
